@@ -143,7 +143,7 @@ public class TrieHybrideNoeud {
 				int hSup = nth.getSup().hauteurInfSup();
 				if (hInf - hSup >= 2) {
 					// rotation
-					if (nth.getInf().hauteurInfSup() - hFI >= 1) {
+					if (hFI-nth.getInf().getInf().hauteurInfSup()>= 1) {
 						nth = nth.rotationGauche(nth.getInf(),nth);
 					}
 					nth = nth.rotationDroit(nth,nth);
@@ -157,7 +157,7 @@ public class TrieHybrideNoeud {
 				int hSup = nth.getSup().hauteurInfSup();
 				if (hSup - hInf >= 2) {
 					// rotation
-					if (nth.getSup().hauteurInfSup() - hFS >= 1) {
+					if (hFS - nth.getSup().getInf().hauteurInfSup() >= 1) {
 						nth = nth.rotationDroit(nth.getSup(),nth);
 					}
 					nth = nth.rotationGauche(nth,nth);
@@ -220,7 +220,7 @@ public class TrieHybrideNoeud {
 	}
 
 	public int hauteurInfSup() {
-		if (this.getCle() == "")
+		if (this.getCle() == ""||this.getCle() == null)
 			return 0;
 		return Math.max(this.getInf().hauteurInfSup(), this.getSup().hauteurInfSup()) + 1;
 	}
