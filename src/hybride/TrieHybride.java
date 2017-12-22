@@ -14,12 +14,14 @@ public class TrieHybride {
 		TrieHybrideNoeud th = new TrieHybrideNoeud();
 		System.out.println("Trie Hybride Test\n");
 		char ch;
+		Integer cpt = 0;
 		do {
 			System.out.println("\nTrie Hybride Operations\n");
 			System.out.println("1. Insertion avec equilibrage");
 			System.out.println("2. Impression ");
 			System.out.println("3. Calcul de l'hauteur sauf le branche egal");
 			System.out.println("4. Insertion Shakespeare");
+			System.out.println("5. Insertion d'un mot donne");
 
 			int choice = scan.nextInt();
 			switch (choice) {
@@ -29,7 +31,7 @@ public class TrieHybride {
 				BufferedReader bf = new BufferedReader(fr);
 
 				String line = bf.readLine();
-				Integer cpt = 0;
+				cpt = 0;
 				while (line != null) {
 					String[] decompose = line.split(" ");
 					for (String string : decompose) {
@@ -71,6 +73,18 @@ public class TrieHybride {
 					}
 				}
 				System.out.println("Temps de insertion: "+(System.currentTimeMillis()-debut)+"ms");
+				
+				break;
+			case 5:
+				System.out.println("Saisir le mot a inserer: ");
+				
+				Scanner entradaEscaner = new Scanner (System.in); 
+				String entradaTeclado = entradaEscaner.nextLine (); 
+
+				debut = System.currentTimeMillis();
+				th.insertEq(entradaTeclado, cpt);
+				System.out.println("Temps de calcul: "+(System.currentTimeMillis()-debut)+"ms");
+				cpt++;
 				
 				break;
 			default:
