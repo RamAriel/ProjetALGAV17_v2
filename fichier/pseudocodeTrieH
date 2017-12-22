@@ -1,0 +1,69 @@
+Ajout dans un Trie Hybride
+
+def TH_Ajout(c, A, v):
+    """ cle * TrieH * valeur -> trieH
+        Renvoie le trie hybride resultant de l'insertion de c dans A."""
+    if EstVide(A):
+        if lgeur(c) == 1:
+            return TrieH(prem(c), TH_Vide(), TH_Vide(), TH_Vide(), v)
+        else:
+            return TrieH(prem(c), TH_Vide(), TH_Ajout(reste(c), Eq(A), v), TH_Vide(), ValVide())
+    else:
+        p = prem(c)
+        if p < Rac(A):
+            return TrieH(Rac(A), TH_Ajout(c, Inf(A), v), Eq(A), Sup(A), Val(A))
+        if p > Rac(A):
+            return TrieH(Rac(A), Inf(A), Eq(A), TH_Ajout(c, Sup(A), v), Val(A))
+        return TrieH(Rac(A), Inf(A), TH_ajout(reste(c), Eq(A), v), Sup(A), Val(A))
+
+Primitives
+
+def EstVide(A):
+    """ TrieH -> booleen
+        Renvoie vrai ssi A est vide."""
+
+        
+def lgeur(c):
+    """ clé -> int
+        Renvoie la longeur du clé """
+        
+def prem(c):
+    """ S -> str
+        Renvoie le premier caractere de la cle."""
+
+def TH_Vide():
+    """ -> TrieH
+        Renvoie le trie hybride vide."""
+
+def TrieH(c, A1, A2, A3, v):
+    """ S * TrieH * TrieH * TrieH * int -> TrieH
+        Renvoie le trie hybride construit avec le caracter c, et le valeur v
+        qu'a comme sous arbre inf, eq et sup les tries hybrides correspondants"""
+         
+def reste(cle):
+    """ S -> str
+        Renvoie la cle privee de son premier caractere."""
+    
+def ValVide():
+    """ -> vide
+        Renvoie vide"""
+        
+def getCle(A):
+    """ TrieH -> S
+    Renvoie le contenu de la racine de A."""
+
+def Inf(A):
+    """ TrieH -> TrieH
+        Renvoie une copie du sous-arbre inférieur de l'arbre A."""
+
+def Eq(A):
+    """ TrieH -> TrieH
+        Renvoie une copie du sous-arbre égal de l'arbre A."""
+
+def Sup(A):
+    """ TrieH -> TrieH
+        Renvoie une copie du sous-arbre supérieur de l'arbre A."""
+
+def Val(A):
+    """ TrieH -> v
+        Renvoie la valeur de la racine du trie hybride."""
